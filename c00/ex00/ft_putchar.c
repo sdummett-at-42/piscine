@@ -7,5 +7,4 @@ void ft_putchar(char c) {
 int main(){
 	ft_putchar('c');
 	ft_putchar('\n');
-	ft_putchar('\n');
 }

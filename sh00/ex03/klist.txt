@@ -1,0 +1,5 @@
+Credentials cache: API:594A49F6-865E-45DF-8A28-004878C0816A
+        Principal: sdummett@42.FR
+
+  Issued                Expires               Principal
+Feb  2 12:24:55 2021  Feb  9 12:24:55 2021  krbtgt/42.FR@42.FR
