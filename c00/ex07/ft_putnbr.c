@@ -12,27 +12,31 @@
 #include <unistd.h>
 #include <stdio.h>
 
-void ft_putnbr(int nb) {
-	char c;
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
-	if (nb < 0) {
-		write(1, "-", 1);
-		nb = -1 * nb;
-		printf("%d", nb);
+void ft_putnbr(int nb) {
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
 	}
-	if (nb == 0) {
-		write(1, "0", 1);
+	if (nb > 9)
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar(nb % 10 + '0');
+
 	}
-	else {
-		while (nb != 0) {
-			c = (nb / 10) + '0';
-			write(1, &c, 1);
-			nb = nb % 10;
-		}
+	else
+	{
+		ft_putchar(nb % 10 + '0');
 	}
 }
 
-int main() {
-	int nb = -100;
+int main()
+{
+	int nb = 567;
 	ft_putnbr(nb);
 }
