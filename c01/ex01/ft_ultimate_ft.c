@@ -6,30 +6,11 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:26:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:26:42 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 11:27:47 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void ft_ultimate(int *********nbr)
+void	ft_ultimate_ft(int *********nbr)
 {
 	*********nbr = 42;
-}
-
-int main()
-{
-	int n = 20;
-	int *a = &n;
-	int **b = &a;
-	int ***c = &b;
-	int ****d = &c;
-	int *****e = &d;
-	int ******f = &e;
-	int *******g = &f;
-	int ********h = &g;
-
-	printf("n = %d\n", n);
-	ft_ultimate(&h);
-	printf("n = %d\n", n);
 }

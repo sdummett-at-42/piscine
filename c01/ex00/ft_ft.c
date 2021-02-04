@@ -6,22 +6,11 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:26:20 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:26:23 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 10:23:47 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-void ft_ft(int *nbr)
+void	ft_ft(int *nbr)
 {
 	*nbr = 42;
-}
-
-int main()
-{
-	int n = 10;
-
-	printf("1.n = %d\n", n);
-	ft_ft(&n);
-	printf("2.n = %d\n", n);
 }

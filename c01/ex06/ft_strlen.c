@@ -6,26 +6,18 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:28:09 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:28:11 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 10:39:32 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (str[i] != '\0')
 	{
 		i++;
 	}
-	return(i);
-}
-
-int main()
-{
-	int n = ft_strlen("test");
-
-	printf("n = %d\n", n);
+	return (i);
 }
