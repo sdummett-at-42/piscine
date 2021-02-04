@@ -12,39 +12,40 @@
 
 #include <unistd.h>
 
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+void ft_display(int a, int b, int c)
+{
+	ft_putchar(a + 48);
+	ft_putchar(b + 48);
+	ft_putchar(c + 48);
+}
+
 void ft_print_comb(void) 
 {
-	int d = 0;
-	int e = 0;
-	int f = 0;
-	char c;
-
-	while (d < 10) {
-		e = d + 1;
-		while (e < 10) {
-			f = e + 1;
-			while (f < 10) {
-				if (f != 9 || e != 8 || d != 7){
-					c = d + 48;
-					write(1, &c, 1);
-					c = e + 48;
-					write(1, &c, 1);
-					c = f + 48;
-					write(1, &c, 1);
-					write(1, ", ", 2);	
-				}
-				else {
-					c = d + 48;
-					write(1, &c, 1);
-					c = e + 48;
-					write(1, &c, 1);
-					c = f + 48;
-					write(1, &c, 1);
-				}
-				f++;
+	int a;
+	int b;
+	int c;
+	
+	a=0;
+	while (a <= 7)
+	{
+		b = a + 1;
+		while (b <= 8)
+		{
+			c = b + 1;
+			while (c <= 9)
+			{
+				ft_display(a, b, c);
+				if (a != 7)
+					write(1, ", ", 2);
+				c++;
 			}
-			e++;
+			b++;
 		}
-		d++;
+		a++;
 	}
 }

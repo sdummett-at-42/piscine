@@ -12,12 +12,18 @@
 
 #include <unistd.h>
 
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
 void ft_print_alphabet(void)
 {
-	int letter = 97;
+	char c = 'a';
 
-	for (int i = 0; i < 26; i++) {
-		write(1, &letter, 1);
-		letter++;
+	while(c <= 'z')
+	{
+		ft_putchar(c);
+		c++;
 	}
 }

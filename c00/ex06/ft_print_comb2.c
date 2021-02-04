@@ -11,44 +11,32 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-void ft_print_comb2(void) {
-	int a = 0;
-	int b = 0;
-	int c = 0;
-	int d = 0;
-	char e;
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
-	while (a < 10) {
-		b = 0;
-		while (b < 10) {
-			c = a;
-			while (c < 10) {
-				d = b + 1;
-				while (d < 10) {
-					/*printf("%d%d %d%d,", a, b, c, d);*/
-					e = a + 48;
-					write(1, &e, 1);
-					e = b + 48;
-					write(1, &e, 1);
-					write(1, " ", 2);
-					e = c + 48;
-					write(1, &e, 1);
-					e = d + 48;
-					write(1, &e, 1);
-					write(1, ", ", 2);
-					d++;
-				}
-				c++;
-			}
+void ft_print_comb2(void)
+{
+	int a;
+	int b;
+
+	a = 0;
+	while (a <= 98)
+	{
+		b = a + 1; 
+		while (b <= 99)
+		{
+			ft_putchar(a / 10 + 48);
+			ft_putchar(a % 10 + 48);
+			ft_putchar(' ');
+			ft_putchar(b / 10 + 48);
+			ft_putchar(b % 10 + 48);
+			if (a != 98)
+				write(1, ", ", 1);
 			b++;
 		}
 		a++;
 	}
-}
-	
-
-int main() {
-	ft_print_comb2();
 }
