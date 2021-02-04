@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:51:04 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:24:00 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:27:23 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,17 @@ void ft_print_comb2(void) {
 			while (c < 10) {
 				d = b + 1;
 				while (d < 10) {
-					printf("%d%d %d%d,", a, b, c, d);
+					/*printf("%d%d %d%d,", a, b, c, d);*/
+					e = a + 48;
+					write(1, &e, 1);
+					e = b + 48;
+					write(1, &e, 1);
+					write(1, " ", 2);
+					e = c + 48;
+					write(1, &e, 1);
+					e = d + 48;
+					write(1, &e, 1);
+					write(1, ", ", 2);
 					d++;
 				}
 				c++;

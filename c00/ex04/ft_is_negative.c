@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:21:16 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:22:32 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:57:32 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,4 @@ void ft_is_negative(int n) {
 	else {
 		write(1, "N", 1);
 	}
-}
-
-int main() {
-	int n = 0;
-	ft_is_negative(n);
 }

@@ -6,14 +6,14 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:22:50 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:22:53 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 17:20:24 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
-void ft_print_comb(void) {
+void ft_print_comb(void) 
+{
 	int d = 0;
 	int e = 0;
 	int f = 0;
@@ -25,10 +25,21 @@ void ft_print_comb(void) {
 			f = e + 1;
 			while (f < 10) {
 				if (f != 9 || e != 8 || d != 7){
-					printf("%d%d%d, ", d, e, f);
+					c = d + 48;
+					write(1, &c, 1);
+					c = e + 48;
+					write(1, &c, 1);
+					c = f + 48;
+					write(1, &c, 1);
+					write(1, ", ", 2);	
 				}
 				else {
-					printf("%d%d%d", d, e, f);
+					c = d + 48;
+					write(1, &c, 1);
+					c = e + 48;
+					write(1, &c, 1);
+					c = f + 48;
+					write(1, &c, 1);
 				}
 				f++;
 			}
@@ -36,8 +47,4 @@ void ft_print_comb(void) {
 		}
 		d++;
 	}
-}
-
-int main() {
-	ft_print_comb();
 }

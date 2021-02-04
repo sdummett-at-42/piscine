@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:18:37 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:19:30 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:51:12 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,4 @@
 
 void ft_putchar(char c) {
 	write(1, &c, 1);
-}
-
-int main(){
-	ft_putchar('c');
-	ft_putchar('\n');
 }

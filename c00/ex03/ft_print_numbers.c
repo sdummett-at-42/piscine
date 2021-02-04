@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:20:39 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 08:20:41 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/04 16:54:48 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,4 @@ void ft_print_numbers(void) {
 		write(1, &number, 1);
 		number++;
 	}
-}
-
-int main() {
-	ft_print_numbers();
 }
