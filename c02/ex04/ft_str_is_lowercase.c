@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_lowercase.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 07:51:54 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/05 08:19:15 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/05 16:37:03 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/05 17:01:56 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-char *ft_strcpy(char *dest, char *src)
+int		ft_str_is_lowercase(char *str)
 {
 	int i;
 
 	i = 0;
-	while (src[i] != '\0')
+	if (str[i] == '\0')
+		return (1);
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
-		if (src[i + 1] == '\0')
-			dest[i + 1] = '\0';
+		if (!(str[i] >= 'a' && str[i] <= 'z'))
+			return (0);
 		i++;
 	}
-	return(dest);	
-}
-
-int main()
-{
-	char str[] = "jsdhf342iu234234";
-	char dest[] = "";
-
-	printf("Before calling function, str = %s, dest = %s\n", str, dest);
-	printf("strcpy:%s\n", ft_strcpy(dest, str));
-	printf("After calling function, str = %s, dest = %s\n", str, dest);
-	return(0);
+	return (1);
 }

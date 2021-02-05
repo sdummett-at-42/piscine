@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_alpha.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 07:51:54 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/05 08:19:15 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/05 08:30:19 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/05 08:45:48 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
-
-char *ft_strcpy(char *dest, char *src)
+int ft_str_is_alpha(char *str)
 {
 	int i;
-
+	
 	i = 0;
-	while (src[i] != '\0')
+	if (str[i] == '\0')
+		return(1);
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
-		if (src[i + 1] == '\0')
-			dest[i + 1] = '\0';
+		if (str[i] < 'a' || str[i] > 'z')
+			if (str[i] < 'A' || str[i] > 'Z')
+				return(0);
 		i++;
 	}
-	return(dest);	
+	return(1);
 }
 
 int main()
 {
-	char str[] = "jsdhf342iu234234";
-	char dest[] = "";
+	char str[] = "azAZ";
 
-	printf("Before calling function, str = %s, dest = %s\n", str, dest);
-	printf("strcpy:%s\n", ft_strcpy(dest, str));
-	printf("After calling function, str = %s, dest = %s\n", str, dest);
-	return(0);
+	printf("return:%d\n",ft_str_is_alpha(str));
 }

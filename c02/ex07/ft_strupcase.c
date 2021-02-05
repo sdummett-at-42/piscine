@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strupcase.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/05 07:51:54 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/05 08:19:15 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/05 17:17:32 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/05 17:26:41 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-char *ft_strcpy(char *dest, char *src)
+char	*ft_strupcase(char *str)
 {
 	int i;
 
 	i = 0;
-	while (src[i] != '\0')
+	if (str[i] == '\0')
+		return (str);
+	while (str[i] != '\0')
 	{
-		dest[i] = src[i];
-		if (src[i + 1] == '\0')
-			dest[i + 1] = '\0';
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] = str[i] - 32;
 		i++;
 	}
-	return(dest);	
+	return (str);
 }
 
 int main()
 {
-	char str[] = "jsdhf342iu234234";
-	char dest[] = "";
+	char chaine[] = "St4On6e7";
 
-	printf("Before calling function, str = %s, dest = %s\n", str, dest);
-	printf("strcpy:%s\n", ft_strcpy(dest, str));
-	printf("After calling function, str = %s, dest = %s\n", str, dest);
-	return(0);
+	printf("ft_upcase:%s\n",ft_strupcase(chaine));
 }
