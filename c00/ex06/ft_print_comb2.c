@@ -34,9 +34,16 @@ void	ft_print_comb2(void)
 			ft_putchar(b / 10 + 48);
 			ft_putchar(b % 10 + 48);
 			if (a != 98)
-				write(1, ", ", 1);
+			{
+				ft_putchar(',');
+				ft_putchar(' ');
+			}
 			b++;
 		}
 		a++;
 	}
+}
+int main()
+{
+	ft_print_comb2();
 }
