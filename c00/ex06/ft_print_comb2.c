@@ -6,18 +6,18 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 15:51:04 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 17:27:23 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/05 07:32:02 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void ft_print_comb2(void)
+void	ft_print_comb2(void)
 {
 	int a;
 	int b;
@@ -25,7 +25,7 @@ void ft_print_comb2(void)
 	a = 0;
 	while (a <= 98)
 	{
-		b = a + 1; 
+		b = a + 1;
 		while (b <= 99)
 		{
 			ft_putchar(a / 10 + 48);

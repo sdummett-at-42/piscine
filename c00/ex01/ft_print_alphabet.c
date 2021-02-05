@@ -6,22 +6,23 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:20:05 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 16:52:37 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/05 07:18:11 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void ft_print_alphabet(void)
+void	ft_print_alphabet(void)
 {
-	char c = 'a';
+	char c;
 
-	while(c <= 'z')
+	c = 'a';
+	while (c <= 'z')
 	{
 		ft_putchar(c);
 		c++;

@@ -6,20 +6,21 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/04 08:20:39 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/04 16:54:48 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/05 07:26:01 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
-	write(1, &c, 1);	
+	write(1, &c, 1);
 }
 
-void ft_print_numbers(void) {
+void	ft_print_numbers(void)
+{
 	char c;
-	
+
 	c = '0';
 	while (c <= '9')
 	{
