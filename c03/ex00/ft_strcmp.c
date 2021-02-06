@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/06 13:30:46 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/06 13:31:29 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/06 12:22:16 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/06 16:07:55 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *src, size_t n)
+int		ft_strcmp(char *s1, char *s2)
 {
-	size_t i;
-
+	int i;
+	
 	i = 0;
-	while (i < n && src[i] != '\0')
+	while (s1[i] != '\0')
 	{
-		dest[i] = src[i];
-		if (i + 1 == n || src[i] == '\0')
-			dest[i + 1] = '\0';
+		if (s1[i] == '\0')
+			return (1);
+		if (s2[i] > s1[i])
+			return (-1);
+		if (s1[i] > s2[i])
+			return (1);
 		i++;
 	}
-	return (dest);
+	if (s2[i] != '\0')
+		return (-1);
+	return (0);
 }
