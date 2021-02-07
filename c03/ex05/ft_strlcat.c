@@ -9,9 +9,8 @@
 /*   Updated: 2021/02/07 17:16:51 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include <stdio.h>
-#include <string.h>
+#include <bsd/string.h>
 
 unsigned int		ft_strlen(char *str)
 {
@@ -45,12 +44,13 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 }
 int main()
 {
-	char desti[100] = "";
-	char source[] = "123";
+	char dest[] = "";
+	char src[] = "";
 
-	//int n = strlcat(desti, source, 3);
-	int n = ft_strlcat(desti, source, 3);
-	printf("source>%s< desti>%s< n>%d<", source, desti, n);
+	int n = 0;
+	strlcat(dest, src, 0);
+	//int n = ft_strcat(dest, src, 0);
+	printf("return:>%d< src:>%s< dest>%s<\n", n, src, dest);
 }
 //si src[0] == '\0' return 0;
 //return the size of src + ;
