@@ -6,26 +6,24 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 12:22:16 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/06 16:07:55 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/07 12:03:52 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
-	
+
 	i = 0;
 	while (s1[i] != '\0')
 	{
-		if (s1[i] == '\0')
-			return (1);
+		if (s2[i] == '\0')
+			return (s1[i]);
 		if (s2[i] > s1[i])
-			return (-1);
+			return (s1[i] - s2[i]);
 		if (s1[i] > s2[i])
-			return (1);
+			return (s2[i] - s1[i]);
 		i++;
 	}
-	if (s2[i] != '\0')
-		return (-1);
-	return (0);
+	return (s1[i] - s2[i]);
 }

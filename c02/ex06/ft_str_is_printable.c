@@ -6,11 +6,9 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 17:02:52 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/05 17:17:19 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/07 07:57:13 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int		ft_str_is_printable(char *str)
 {
@@ -19,15 +17,10 @@ int		ft_str_is_printable(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (!(str[i] >= ' ' && str[i] <= '~'))
+		if ((str[i] >= 32 && str[i] <= 126) || (str[i] >= 9 && str[i] <= 13))
+			i++;
+		else
 			return (0);
-		i++;
 	}
 	return (1);
 }
-int main() // <9-13>
-{
-	char chaine[] = "";
-	printf("%d\n", ft_str_is_printable(chaine));
-}
-

@@ -6,11 +6,9 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 13:38:06 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/06 13:41:31 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/07 08:51:42 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdio.h>
 
 int		ft_char_is_alpha(char c)
 {
@@ -51,9 +49,4 @@ char	*ft_strcapitalize(char *str)
 		i++;
 	}
 	return (str);
-}
-int main()
-{
-	char chaine[] = "salut, comment tu vas ? 42mots quaRAnte-deux; cinquante+et+un";
-	printf("%s",ft_strcapitalize(chaine));
 }
