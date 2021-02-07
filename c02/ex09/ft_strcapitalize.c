@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 int		ft_char_is_alpha(char c)
 {
 	if (c >= 'a' && c <= 'z')
@@ -27,8 +29,13 @@ char	*ft_strcapitalize(char *str)
 	int i;
 
 	i = 0;
-	if (str[i] == '\0')
-		return (str);
+	while (str[i] != '\0')
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+			str[i] += 32;
+		i++;
+	}
+	i = 0;
 	if (str[i] >= 'a' && str[i] <= 'z')
 	{
 		str[i] -= 32;
@@ -44,4 +51,9 @@ char	*ft_strcapitalize(char *str)
 		i++;
 	}
 	return (str);
+}
+int main()
+{
+	char chaine[] = "salut, comment tu vas ? 42mots quaRAnte-deux; cinquante+et+un";
+	printf("%s",ft_strcapitalize(chaine));
 }

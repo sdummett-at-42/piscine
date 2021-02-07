@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 char	*ft_strcpy(char *dest, char *src)
 {
 	int i;
@@ -18,9 +20,15 @@ char	*ft_strcpy(char *dest, char *src)
 	while (src[i] != '\0')
 	{
 		dest[i] = src[i];
-		if (src[i + 1] == '\0')
-			dest[i + 1] = '\0';
 		i++;
 	}
+	dest[i] = '\0';
 	return (dest);
+}
+int main()
+{
+	char desti[15] = "ksj sdf sf";
+	char source[] = " d  da  d  ";
+	ft_strcpy(desti, source);
+	printf(">%s<  >%s<", desti, source);
 }
