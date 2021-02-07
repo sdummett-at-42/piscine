@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/05 17:02:52 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/07 07:57:13 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/07 17:21:06 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_str_is_printable(char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if ((str[i] >= 32 && str[i] <= 126) || (str[i] >= 9 && str[i] <= 13))
+		if ((str[i] >= 32 && str[i] <= 126)
 			i++;
 		else
 			return (0);
