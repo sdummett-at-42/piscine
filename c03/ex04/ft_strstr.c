@@ -6,12 +6,10 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 14:07:13 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/07 15:30:34 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/08 16:35:21 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
 int		ft_strlen(char *str)
 {
 	int i;
@@ -25,6 +23,7 @@ int		ft_strlen(char *str)
 char	*ft_strstr(char *str, char *to_find)
 {
 	int i;
+
 	if (*to_find == '\0')
 		return (str);
 	while (*str != '\0')
@@ -36,17 +35,7 @@ char	*ft_strstr(char *str, char *to_find)
 				return (str);
 			i++;
 		}
-
 		str++;
-
 	}
-	return (NULL);
+	return (0);
 }
-int main()
-{
-	char meule_de_foin[] = "2452452456123";
-	char aiguille[] = "12";
-	
-	printf("strstr>%s<ft_strstr>%s<\n", strstr(meule_de_foin, aiguille), ft_strstr(meule_de_foin, aiguille));
-}
-

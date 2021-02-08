@@ -6,13 +6,11 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 13:18:13 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/07 13:40:01 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/08 10:04:13 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-char	*ft_strcat(char* dest, char* src)
+char	*ft_strcat(char *dest, char *src)
 {
 	int i;
 
@@ -27,12 +25,4 @@ char	*ft_strcat(char* dest, char* src)
 	}
 	dest[i] = '\0';
 	return (dest);
-			
-}
-int main()
-{
-	char source[] = "1111111";
-	char dest[100] = "";
-	//printf("return>%s< dest>%s< source>%s<", strcat(dest, source), dest, source);
-	printf("return>%s< dest>%s< source>%s<", ft_strcat(dest, source), dest, source);
 }
