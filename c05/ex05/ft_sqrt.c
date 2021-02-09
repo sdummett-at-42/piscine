@@ -1,14 +1,13 @@
-#include <stdio.h>
-
 int	ft_sqrt(int nb)
 {
-	
-}
+	int sqrt;
 
-int main()
-{
-	int n;
-
-	n = 0;
-	printf("sqrt:%d\n", ft_sqrt(n));
+	sqrt =  nb / 2 + 1;
+	while (sqrt > 0)
+	{
+		if (sqrt * sqrt == nb)
+			return (sqrt);
+		sqrt--;
+	}
+	return (0);
 }
