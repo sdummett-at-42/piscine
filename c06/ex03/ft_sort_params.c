@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int i;
 
@@ -22,12 +22,26 @@ int ft_strlen(char *str)
 	return (i);
 }
 
-void ft_putstr(char *str, int str_len)
+void	ft_putstr(char *str, int str_len)
 {
 	write(1, str, str_len);
+	write(1, "\n", 1);
 }
 
-int ft_strcmp(char *s1, char *s2)
+void	ft_strcpy(char *dest, char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+}
+
+int	ft_strcmp(char *s1, char *s2)
 {
 	int i;
 
@@ -41,6 +55,28 @@ int ft_strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (s1[i] - s2[i]);
+}
+//
+//		SEGMENTATION FAULT 
+//
+void	ft_sort_params(char *param[], int tab_size)
+{
+	int i;
+	char str[100000];
+
+	i = 1;
+	while (i < tab_size - 1)
+	{
+		if (ft_strcmp(param[i], param[i + 1]) > 0)
+		{
+			ft_strcpy(str, param[i]);
+			ft_strcpy(param[i], param[i + 1]);
+			ft_strcpy(param[i + 1], str);
+			i = 0;
+		}
+		else
+			i++;
+	}
 }
 
 int	main(int argc, char *argv[])
@@ -56,28 +92,11 @@ int	main(int argc, char *argv[])
 		ft_putstr(argv[1], ft_strlen(argv[1]));
 		return (0);
 	}
+	ft_sort_params(&argv[0], argc);
 	i = 1;
-	while (i < argc - 1)
+	while (i < argc)
 	{
-		if (ft_strcmp(argv[i], argv[i + 1]) < 0)
-		{
-			j = 0;
-			tab[j] = i + 1;;
-			j++;
-			i = 0;
-		}
-		else
-		{
-			tab[j] = i;
-			j++;
-			i++;
-		}
-	}
-	tab[j] = i;
-	i = 1;
-	while (i <= argc )
-	{
-		ft_putstr(argv[tab[i]], ft_strlen(argv[tab[i]]));
+		ft_putstr(argv[i], ft_strlen(argv[i]));
 		i++;
 	}
 	return (0);
