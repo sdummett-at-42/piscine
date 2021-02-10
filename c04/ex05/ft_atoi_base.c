@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 07:38:27 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 16:32:50 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:19:18 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,13 @@ int		ft_atoi_base(char *str, char *base)
 	int sign;
 	int tab[ft_strlen(base) * 2];
 
-	if (ft_base_is_ok(base) == 1) //|| ft_str_is_convertissable(str, base) == 0)
+	if (ft_base_is_ok(base) == 1)
 		return (0);
 	sign = 1;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
-	while (*str == '+' || *str  == '-')
-		if (*str++  == '-')
+	while (*str == '+' || *str == '-')
+		if (*str++ == '-')
 			sign *= -1;
 	if (ft_str_is_convertissable(str, base) == 0)
 		return (0);

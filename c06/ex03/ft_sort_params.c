@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:14:48 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 15:14:51 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:10:57 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,19 @@ int	main(int argc, char *argv[])
 		ft_putstr(argv[1], ft_strlen(argv[1]));
 		return (0);
 	}
-	i = 0;
+	i = 1;
 	while (i < argc - 1)
 	{
-		if (ft_strcmp(argv[i + 1], argv[i + 2]) > 0)
+		if (ft_strcmp(argv[i], argv[i + 1]) < 0)
 		{
 			j = 0;
-			tab[j] = i + 2;;
+			tab[j] = i + 1;;
 			j++;
 			i = 0;
 		}
 		else
 		{
-			tab[j] = i + 1;
+			tab[j] = i;
 			j++;
 			i++;
 		}

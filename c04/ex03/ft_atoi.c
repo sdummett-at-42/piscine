@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 07:40:23 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 08:10:12 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/10 17:16:24 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int	ft_atoi(char *str)
 {
 	int sign;
 	int nb;
-	
+
 	sign = 1;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
@@ -22,14 +22,13 @@ int	ft_atoi(char *str)
 	{
 		if (*str == '-')
 			sign *= -1;
-		str++;		
+		str++;
 	}
 	nb = 0;
 	while (*str >= '0' && *str <= '9')
 	{
 		nb = nb * 10 + *str - 48;
-	       str++;	
+		str++;
 	}
 	return (nb * sign);
-
 }
