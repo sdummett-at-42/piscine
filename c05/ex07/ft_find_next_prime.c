@@ -14,7 +14,7 @@ int	ft_find_next_prime(int nb)
 {
 	int n;
 
-	if (nb == 0 || nb == 1 || nb == 2)
+	if (nb <= 0 || nb == 1 || nb == 2)
 		return (2);
 	while (1)
 	{
@@ -30,3 +30,11 @@ int	ft_find_next_prime(int nb)
 		nb++;
 	}
 }
+#include <stdio.h>
+int main()
+{
+	int nb = -2147483647;
+
+	printf("%d\n", ft_find_next_prime(nb));
+}
+

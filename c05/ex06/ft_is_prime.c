@@ -13,7 +13,6 @@
 int	ft_is_prime(int nb)
 {
 	int n;
-	int i;
 
 	if (nb == 0 || nb == 1)
 		return (0);
@@ -27,4 +26,11 @@ int	ft_is_prime(int nb)
 		n++;
 	}
 	return (1);
+}
+
+#include <stdio.h>
+int main()
+{
+	int nb = -2147483647;
+	printf("%d\n", ft_is_prime(nb));
 }
