@@ -6,14 +6,14 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:09:28 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 15:09:31 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:38:20 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_iterative_factorial(int nb)
+int		ft_iterative_factorial(int nb)
 {
 	int i;
-	
+
 	if (nb < 0)
 		return (0);
 	if (nb == 0)

@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:12:46 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 15:12:48 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:04:37 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@ int	ft_sqrt(int nb)
 {
 	int sqrt;
 
-	sqrt =  nb / 2 + 1;
+	sqrt = nb / 2 + 1;
 	while (sqrt > 0)
 	{
 		if (sqrt * sqrt == nb)

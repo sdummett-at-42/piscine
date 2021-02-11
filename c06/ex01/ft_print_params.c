@@ -6,15 +6,26 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:14:06 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 15:14:10 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/11 17:19:58 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+int ft_strlen(char *str)
 {
-	write(1, &c, 1);
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return(i);
+}
+
+void ft_putstr(char *str, int strlen)
+{
+	write(1, str, strlen);
+	write(1, "\n", strlen);
 }
 
 int main(int argc, char *argv[])
@@ -25,14 +36,8 @@ int main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		j = 0;
-		while (argv[i][j] != '\0')
-		{
-			ft_putchar(argv[i][j]);
-			j++;
-		}
-		ft_putchar('\n');
-		i++;
+		ft_putstr(argv[i], ft_strlen(argv[i]));
+		ft_putstr("\n", 1);
 	}
 	return (0);
 }

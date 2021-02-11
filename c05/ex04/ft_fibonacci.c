@@ -6,11 +6,11 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:12:34 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 15:12:35 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/11 14:58:30 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_fibonacci(int index)
+int	ft_fibonacci(int index)
 {
 	if (index == 1)
 		return (1);

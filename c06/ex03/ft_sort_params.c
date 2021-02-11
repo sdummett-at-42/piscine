@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:14:48 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 17:10:57 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:45:38 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,6 @@ void	ft_putstr(char *str, int str_len)
 	write(1, "\n", 1);
 }
 
-void	ft_strcpy(char *dest, char *src)
-{
-	int i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-}
-
 int	ft_strcmp(char *s1, char *s2)
 {
 	int i;
@@ -56,23 +43,27 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return (s1[i] - s2[i]);
 }
-//
-//		SEGMENTATION FAULT 
-//
-void	ft_sort_params(char *param[], int tab_size)
+
+void ft_sort_params(char *param[],int *tab, int tab_size)
 {
 	int i;
-	char str[100000];
+	int temp;
 
+	i = 0;
+	while (i < tab_size)
+	{
+		tab[i] = i;
+		i++;
+	}
 	i = 1;
 	while (i < tab_size - 1)
 	{
-		if (ft_strcmp(param[i], param[i + 1]) > 0)
+		if (ft_strcmp(param[tab[i]], param[tab[i + 1]]) > 0)
 		{
-			ft_strcpy(str, param[i]);
-			ft_strcpy(param[i], param[i + 1]);
-			ft_strcpy(param[i + 1], str);
-			i = 0;
+			temp = tab[i];
+			tab[i] = tab[i + 1];
+			tab[i + 1] =  temp;
+			i = 1;
 		}
 		else
 			i++;
@@ -82,7 +73,6 @@ void	ft_sort_params(char *param[], int tab_size)
 int	main(int argc, char *argv[])
 {
 	int i;
-	int j;
 	int tab[argc];
 
 	if (argc == 1)
@@ -92,11 +82,11 @@ int	main(int argc, char *argv[])
 		ft_putstr(argv[1], ft_strlen(argv[1]));
 		return (0);
 	}
-	ft_sort_params(&argv[0], argc);
+	ft_sort_params(&argv[0], tab, argc);
 	i = 1;
 	while (i < argc)
 	{
-		ft_putstr(argv[i], ft_strlen(argv[i]));
+		ft_putstr(argv[tab[i]], ft_strlen(argv[tab[i]]));
 		i++;
 	}
 	return (0);

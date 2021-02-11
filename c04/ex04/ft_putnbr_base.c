@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/09 12:09:50 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/09 16:54:12 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:36:59 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,35 @@ void	ft_print_base(int *tab, int tab_size, char *base)
 		tab_size--;
 		i++;
 	}
+	str[i] = '\0';
 	ft_putstr(str, ft_strlen(str));
 }
 
 void	ft_putnbr_base(int nbr, char *base)
 {
 	int			i;
-	int			n;
 	int			tab[20];
 	long long	nb;
 
 	nb = nbr;
 	if (ft_base_is_ok(base) == 1 || ft_strlen(base) == 1)
 		return ;
-	if (nbr < 0)
+	if (nb < 0)
 	{
 		nb *= -1;
 		write(1, "-", 1);
 	}
-	n = ft_strlen(base);
 	i = 0;
+	if (nb == 0)
+	{
+		tab[i] = nb;
+		i = 1;
+	}
 	while (nb > 0)
 	{
-		tab[i] = nb % n;
+		tab[i] = nb % ft_strlen(base);
 		i++;
-		nb = nb / n;
+		nb = nb / ft_strlen(base);
 	}
-	j = 0;
 	ft_print_base(tab, i, base);
 }
