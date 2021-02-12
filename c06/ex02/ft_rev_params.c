@@ -6,13 +6,13 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:14:17 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/10 15:14:25 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/12 17:18:19 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int i;
 
@@ -22,27 +22,24 @@ int	ft_strlen(char *str)
 	return (i);
 }
 
-void	ft_putchar(char c)
+void	ft_putstr(char *str, int strlen)
 {
-	write(1, &c, 1);
+	write(1, str, strlen);
 }
 
-int	main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
 	int i;
-	int j;
-	
-	i = 1;
-	while (i < argc)
+
+	if (argc != 1)
 	{
-		j = ft_strlen(argv[i]);
-		while (j >= 0)
+		i = argc;
+		while (i > 1)
 		{
-			ft_putchar(argv[i][j]);
-			j--;
+			ft_putstr(argv[i - 1], ft_strlen(argv[i - 1]));
+			ft_putstr("\n", 1);
+			i--;
 		}
-		ft_putchar('\n');
-		i++;
 	}
 	return (0);
 }

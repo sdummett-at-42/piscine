@@ -6,13 +6,13 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:14:48 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/11 15:45:38 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:14:11 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-int	ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int i;
 
@@ -28,7 +28,7 @@ void	ft_putstr(char *str, int str_len)
 	write(1, "\n", 1);
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
 
@@ -37,14 +37,14 @@ int	ft_strcmp(char *s1, char *s2)
 	{
 		if (s2[i] == 0)
 			return (s1[i]);
-		if (s1[i] > s2[i] || s2[i] > s1[i]) 
+		if (s1[i] > s2[i] || s2[i] > s1[i])
 			return (s1[i] - s2[i]);
 		i++;
 	}
 	return (s1[i] - s2[i]);
 }
 
-void ft_sort_params(char *param[],int *tab, int tab_size)
+void	ft_sort_params(char *param[], int *tab, int tab_size)
 {
 	int i;
 	int temp;
@@ -62,7 +62,7 @@ void ft_sort_params(char *param[],int *tab, int tab_size)
 		{
 			temp = tab[i];
 			tab[i] = tab[i + 1];
-			tab[i + 1] =  temp;
+			tab[i + 1] = temp;
 			i = 1;
 		}
 		else
@@ -70,7 +70,7 @@ void ft_sort_params(char *param[],int *tab, int tab_size)
 	}
 }
 
-int	main(int argc, char *argv[])
+int		main(int argc, char *argv[])
 {
 	int i;
 	int tab[argc];

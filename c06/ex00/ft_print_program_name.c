@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:13:47 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/11 16:46:47 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/12 16:57:56 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ void	ft_putstr(char *str, int strlen)
 
 int		main(int argc, char *argv[])
 {
-	int i;
-	
-	ft_putstr(argv[argc - 1], ft_strlen(argv[argc - 1]));
+	ft_putstr(argv[argc - argc], ft_strlen(argv[argc - argc]));
+	ft_putstr("\n", 1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/10 15:13:11 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/11 15:12:42 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:34:55 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,3 @@ int	ft_find_next_prime(int nb)
 		nb++;
 	}
 }
-#include <stdio.h>
-int main()
-{
-	int nb = -2147483647;
-
-	printf("%d\n", ft_find_next_prime(nb));
-}
-

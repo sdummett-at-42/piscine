@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/10 15:12:46 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/12 15:31:24 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/12 16:00:42 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/12 16:16:57 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_sqrt(int nb)
-{
-	int sqrt;
+#include <stdio.h>
+#include <string.h>
 
-	sqrt = 1;
-	while (sqrt <= nb / 2)
-	{
-		if (sqrt * sqrt == nb)
-			return (sqrt);
-		sqrt--;
-	}
-	return (0);
+int main()
+{
+	char chaine[] = "This is a string";
+
+	printf("%s", strdup(chaine));
+
 }
