@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/12 16:00:42 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/13 13:52:41 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/13 13:56:17 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/13 14:59:06 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <string.h>
-
-int ft_strlen(char *str)
+#include <stdio.h>
+int *ft_range(int min, int max)
 {
-	int len;
+	int *tab = NULL;
 
-	len = 0;
-	while (str[len] != 0)
-		len++;
-	return(len);
+	if (min >= max)
+		return (tab);
+	return(tab);
+
 }
 
-char *ft_strdup(char *src)
+int main()
 {
-	char *dest;
+	int min;
+	int max;
+	int size;
+	int *tab;
 
-	dest = (char *)malloc(sizeof(char) * ft_strlen(src));
-	dest = src;
-	return (dest);
+	min = -600;
+	max = -700;
+	if (min > max)
+		printf("MIN > MAX");
+	if (min < 0)
+		if (max < 0)
+			size = min + (max * -1);
+	//printf("tab:>%s<", ft_range(min, max));
 }
