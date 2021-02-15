@@ -6,10 +6,10 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/07 14:07:13 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/08 16:35:21 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/15 07:38:04 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdio.h>
 int		ft_strlen(char *str)
 {
 	int i;
@@ -38,4 +38,8 @@ char	*ft_strstr(char *str, char *to_find)
 		str++;
 	}
 	return (0);
+}
+int main()
+{
+	printf("%s\n", ft_strstr("stone et noufel s'amusent", "noufel"));
 }
