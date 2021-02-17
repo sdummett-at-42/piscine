@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strs_to_tab.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/12 16:00:42 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/17 18:26:06 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/17 21:54:18 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/18 00:30:19 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "ft_stock_str.h"
 
 int		ft_strlen(char *str)
 {
@@ -22,13 +23,10 @@ int		ft_strlen(char *str)
 	return (len);
 }
 
-char	*ft_strdup(char *src)
+void	ft_strcpy(char *dest, char *src)
 {
-	char	*dest;
-	int		i;
+	int i;
 
-	if (!(dest = (char *)malloc(sizeof(char) * ft_strlen(src) + 1)))
-		return (0);
 	i = 0;
 	while (src[i] != 0)
 	{
@@ -36,5 +34,25 @@ char	*ft_strdup(char *src)
 		i++;
 	}
 	dest[i] = 0;
-	return (dest);
+}
+
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
+{
+	int		i;
+	t_stock_str	*stock_tab;
+
+	if (!(stock_tab = (t_stock_str *)malloc(sizeof(t_stock_str) * ac + 1)))
+		return (0);
+	i = 0;
+	while (i < ac)
+	{
+		stock_tab[i].size = ft_strlen(av[i]);
+		stock_tab[i].str = av[i];
+		if (!(stock_tab[i].copy = (char *)malloc(sizeof(char) *
+						ft_strlen(av[i]) + 1)))
+			return (0);
+		ft_strcpy(stock_tab[i].copy, av[i]);
+		i++;
+	}
+	stock_tab[i].str = 0;
 }
