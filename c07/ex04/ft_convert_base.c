@@ -6,53 +6,16 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 19:40:46 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/16 12:36:46 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/17 11:37:04 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include <stdlib.h>
 
-int		ft_strlen(char *str)
-{
-	int len;
-
-	len = 0;
-	while (str[len] != 0)
-		len++;
-	return (len);
-}
-
-void	ft_strcpy(char *dest, char *src)
-{
-	int i;
-
-	i = 0;
-	while (src[i] != 0)
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-}
-
-void		ft_strrev(char *str)
-{
-	int		i;
-	int		j;
-	char	c;
-
-	i = 0;
-	j = ft_strlen(str);
-	while (i < j - 1)
-	{
-		c = str[i];
-		str[i] = str[j - 1];
-		str[j - 1] = c;
-		i++;
-		j--;
-	}
-}
+int		ft_strlen(char *str);
+int		ft_base_is_manipulable(char c, char *base);
+void	ft_strcpy(char *dest, char *src);
+void	ft_strrev(char *str);
 
 int		ft_nbr_is_convertissable(char *nbr, char *base)
 {
@@ -107,20 +70,6 @@ int		ft_check_base(char *base)
 	return (0);
 }
 
-int		ft_base_is_manipulable(char c, char *base)
-{
-	int i;
-
-	i = 0;
-	while (base[i] != 0)
-	{
-		if (base[i] == c)
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
 int		ft_convert_to_base10(char *nbr, char *base_from, int len)
 {
 	int i;
@@ -138,7 +87,7 @@ int		ft_convert_to_base10(char *nbr, char *base_from, int len)
 	return (nb);
 }
 
-char		*ft_convert_from_base10(int nb, char *base_to)
+char	*ft_convert_from_base10(int nb, char *base_to, int sign)
 {
 	int		i;
 	int		base_size;
@@ -154,6 +103,11 @@ char		*ft_convert_from_base10(int nb, char *base_to)
 		nb = nb / base_size;
 		i++;
 	}
+	if (sign < 0)
+	{
+		nbr_temp[i] = '-';
+		i++;
+	}
 	nbr_temp[i] = '\0';
 	ft_strrev(nbr_temp);
 	nbr = (char *)malloc(sizeof(nbr) * ft_strlen(nbr_temp) + 1);
@@ -164,32 +118,27 @@ char		*ft_convert_from_base10(int nb, char *base_to)
 
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int n;
-	//printf("base_from:%d, base_to:%d\n", ft_check_base(base_from), ft_check_base(base_to));	
+	int base10;
+	int sign;
+	int len;
+
+	sign = 1;
+	base10 = 0;
 	if (ft_check_base(base_from) || ft_check_base(base_to))
-	{
-		printf("ONE OF THE BASE ISNT OKAY!\n");
 		return (0);
+	while ((*nbr >= 9 && *nbr <= 13) || (*nbr == ' '))
+		nbr++;
+	while (*nbr == '-' || *nbr == '+')
+	{
+		if (*nbr == '-')
+			sign = sign * -1;
+		nbr++;
 	}
 	if (ft_nbr_is_convertissable(nbr, base_from))
 	{
-		printf("NBR IS CONVERTISSABLE!\n");
-		printf("convertissable_len:%d\n", ft_nbr_is_convertissable(nbr, base_from));
-		printf("%s nbr in base 10 = %d\n", nbr, ft_convert_to_base10(nbr, base_from, ft_nbr_is_convertissable(nbr, base_from)));
-		n =  ft_convert_to_base10(nbr, base_from, ft_nbr_is_convertissable(nbr, base_from));
-		printf("returnfrombase10:>%s<\n", ft_convert_from_base10(1000, base_to));
-		
-	}	
-	return ();
-	
-}
-
-int	main()
-{
-	char base_from[] = "01";
-	char base_to[] = "0123456789abcdef";
-	char nbr[] = "1111011";
-
-	printf(">%s<\n", ft_convert_base(nbr, base_from, base_to));
+		len = ft_nbr_is_convertissable(nbr, base_from);
+		base10 = ft_convert_to_base10(nbr, base_from, len);
+		return (ft_convert_from_base10(base10, base_to, sign));
+	}
 	return (0);
 }

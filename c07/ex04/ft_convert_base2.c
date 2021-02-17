@@ -1,16 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_convert_base2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/12 16:00:42 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/17 15:03:17 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/17 10:59:58 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/17 11:11:13 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <stdlib.h>
 
 int		ft_strlen(char *str)
 {
@@ -22,18 +20,47 @@ int		ft_strlen(char *str)
 	return (len);
 }
 
-char	*ft_strdup(char *src)
+void	ft_strcpy(char *dest, char *src)
 {
-	char	*dest;
-	int		i;
+	int i;
 
-	if (!(dest = (char *)malloc(sizeof(char) * ft_strlen(src) + 1)))
-		return (0);
 	i = 0;
 	while (src[i] != 0)
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	return (dest);
+	dest[i] = '\0';
+}
+
+void	ft_strrev(char *str)
+{
+	int		i;
+	int		j;
+	char	c;
+
+	i = 0;
+	j = ft_strlen(str);
+	while (i < j - 1)
+	{
+		c = str[i];
+		str[i] = str[j - 1];
+		str[j - 1] = c;
+		i++;
+		j--;
+	}
+}
+
+int		ft_base_is_manipulable(char c, char *base)
+{
+	int i;
+
+	i = 0;
+	while (base[i] != 0)
+	{
+		if (base[i] == c)
+			return (i);
+		i++;
+	}
+	return (i);
 }
