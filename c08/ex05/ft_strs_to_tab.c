@@ -6,14 +6,14 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 21:54:18 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/18 10:12:55 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/18 10:09:27 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "ft_stock_str.h"
 
-int					ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int len;
 
@@ -23,7 +23,7 @@ int					ft_strlen(char *str)
 	return (len);
 }
 
-void				ft_strcpy(char *dest, char *src)
+void	ft_strcpy(char *dest, char *src)
 {
 	int i;
 
@@ -38,7 +38,7 @@ void				ft_strcpy(char *dest, char *src)
 
 struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
 {
-	int			i;
+	int		i;
 	t_stock_str	*stock_tab;
 
 	if (!(stock_tab = (t_stock_str *)malloc(sizeof(t_stock_str) * ac + 1)))

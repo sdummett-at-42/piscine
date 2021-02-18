@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 20:53:07 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/18 00:46:51 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/18 13:20:53 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define t_bool int
 # define TRUE 1
 # define FALSE 0
-# define EVEN(nbr) (nbr % 2 ? TRUE : FALSE)
+# define EVEN(nbr) (nbr % 2 ? FALSE : TRUE)
 # define SUCCESS 0
 
 #endif

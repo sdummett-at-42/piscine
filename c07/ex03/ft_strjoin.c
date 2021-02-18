@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/15 16:02:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/17 12:30:59 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/18 13:58:54 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*ft_strjoin_bis(int size, char **strs, char *sep)
 	char	*dest;
 
 	i = 0;
-	len = ft_strlen(sep);
+	len = ft_strlen(sep) + size ;
 	while (i < size)
 	{
 		len = len + ft_strlen(strs[i]);
@@ -60,7 +60,7 @@ char	*ft_strjoin_bis(int size, char **strs, char *sep)
 	while (i < size)
 	{
 		ft_strcat(dest, strs[i]);
-		if (i + 1 != size && i + 2 != size)
+		if (i + 1 != size)
 			ft_strcat(dest, sep);
 		i++;
 	}

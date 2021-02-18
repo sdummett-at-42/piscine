@@ -6,14 +6,14 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 23:49:19 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/18 00:14:56 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/18 10:10:36 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "ft_stock_str.h"
 
-int		ft_strlen(char *str)
+int		ft_strlenght(char *str)
 {
 	int len;
 
@@ -30,13 +30,11 @@ void	ft_putchar(char c)
 
 void	ft_putstr(char *str)
 {
-	write(1, str, ft_strlen(str));
+	write(1, str, ft_strlenght(str));
 }
 
 void	ft_putnbr(int nb)
 {
-	int n;
-
 	if (nb == -2147483648)
 	{
 		ft_putstr("-2147483648");
@@ -67,7 +65,8 @@ void	ft_show_tab(struct s_stock_str *par)
 		ft_putchar('\n');
 		ft_putnbr(par[i].size);
 		ft_putchar('\n');
-		ft_putstr(para[i].copy);
+		ft_putstr(par[i].copy);
 		ft_putchar('\n');
+		i++;
 	}
 }

@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_point.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 21:41:56 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/18 08:09:59 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/18 10:43:14 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/18 10:44:38 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_POINT_H
-# define FT_POINT_H
-
-typedef	struct	s_point
+int ft_strlen(char *str)
 {
-	int x;
-	int y;
-}				t_point;
+	int len;
 
-#endif
+	len = 0;
+	while (*str)
+		len++;
+	return (len);
+}
