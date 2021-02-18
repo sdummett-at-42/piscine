@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 10:40:01 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/18 10:41:44 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/18 20:36:18 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,5 @@
 void ft_putstr(char *str);
 {
 	while (*str)
-	{
-		ft_putchar(*str);
-		str++;
-	}
+		write(1, str++, 1);
 }
