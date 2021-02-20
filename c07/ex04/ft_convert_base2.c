@@ -5,62 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/17 10:59:58 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/17 11:11:13 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/20 19:47:09 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/20 19:53:43 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
+int		ft_base_is_ok(char *base)
+{
+	int			i;
+	int			j;
+
+	if (*base == 0)
+		return (1);
+	i = 0;
+	while (base[i])
+	{
+		if (base[i] == '-' || base[i] == '+')
+			return (1);
+		j = 0;
+		while (base[j])
+		{
+			if (i == j)
+				j++;
+			else if (base[j] == base[i])
+				return (1);
+			else
+				j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
 int		ft_strlen(char *str)
 {
-	int len;
-
-	len = 0;
-	while (str[len] != 0)
-		len++;
-	return (len);
-}
-
-void	ft_strcpy(char *dest, char *src)
-{
-	int i;
+	int			i;
 
 	i = 0;
-	while (src[i] != 0)
-	{
-		dest[i] = src[i];
+	while (str[i])
 		i++;
-	}
-	dest[i] = '\0';
-}
-
-void	ft_strrev(char *str)
-{
-	int		i;
-	int		j;
-	char	c;
-
-	i = 0;
-	j = ft_strlen(str);
-	while (i < j - 1)
-	{
-		c = str[i];
-		str[i] = str[j - 1];
-		str[j - 1] = c;
-		i++;
-		j--;
-	}
-}
-
-int		ft_base_is_manipulable(char c, char *base)
-{
-	int i;
-
-	i = 0;
-	while (base[i] != 0)
-	{
-		if (base[i] == c)
-			return (i);
-		i++;
-	}
 	return (i);
+}
+
+char	*ft_put_base(int *tab, int tab_size, int sign, char *base)
+{
+	int			i;
+	char		*str;
+
+	if (!(str = (char *)malloc(sizeof(char) * tab_size + sign + 1)))
+		return (0);
+	i = 0;
+	if (sign == 1)
+	{
+		str[i] = '-';
+		i++;
+	}
+	while (tab_size > 0)
+	{
+		str[i] = base[tab[tab_size - 1]];
+		tab_size--;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 10:38:48 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/19 20:55:28 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/15 09:25:56 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/18 07:35:08 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_swap(int *a, int *b)
-{
-	int temp;
+#ifndef FT_H
+# define FT_H
 
-	temp = *a;
-	*a = *b;
-	*b = *a;
-}
+void	ft_putchar(char c);
+void	ft_swap(int *a, int *b);
+void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+int		ft_strcmp(char *s1, char *s2);
+
+#endif
