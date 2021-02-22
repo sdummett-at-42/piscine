@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_op.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 10:43:14 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/22 18:49:08 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/22 22:53:14 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/22 22:55:21 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+int	add(int a, int b)
 {
-	int len;
+	return (a + b);
+}
 
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
+int	sub(int a, int b)
+{
+	return (a - b);
+}
+
+int	mult(int a, int b)
+{
+	return (a * b);
+}
+
+int	div(int a, int b)
+{
+	return (a / b);
+}
+
+int	mod(int a, int b)
+{
+	return (a % b);
 }

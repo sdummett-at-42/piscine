@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 10:43:14 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/22 18:49:08 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/22 18:55:58 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/22 19:51:08 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
-{
-	int len;
+#include <stdio.h>
+char *ft_convert_base(char *nbr, char *base_from, char *base_to);
 
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
+int main()
+{
+	char nbr[] = "++++++++++-++1111011++++++-0";
+	char base_from[] = "01";
+	char base_to[] = "0123456789abcdef";
+	printf("res:>%s<\n",ft_convert_base(nbr, base_from, base_to));
+
 }

@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 19:47:09 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/20 19:53:43 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/22 19:45:49 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_base_is_ok(char *base)
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == '-' || base[i] == '+')
+		if (base[i] == '-' || base[i] == '+' || base[i] == '\f' || base[i] == '\t' || base[i] == ' ' || base[i] == '\n' || base[i] == '\r' || base[i] == '\v' || base[i] < 32 || base[i] == 127)
 			return (1);
 		j = 0;
 		while (base[j])

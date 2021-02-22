@@ -6,21 +6,18 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 16:11:54 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/22 16:18:00 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/22 20:16:25 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-
-int add(int a, int b)
+void ft_foreach(int *tab, int length, void(*f)(int))
 {
-	return (a + b);
-}
-
-int main()
-{
-	int(*f)(int, int);
-
-	f = &add;
-	printf("ret:%d\n", f(3, 3));
+	int i;
+	
+	i = 0;
+	while (i < length)
+	{
+		f(tab[i]);
+		i++;
+	}
 }
