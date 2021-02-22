@@ -6,14 +6,15 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 10:45:05 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/19 20:49:49 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/22 15:30:21 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strcmp(char *s1, char *s2)
+int		ft_strcmp(char *s1, char *s2)
 {
 	int i;
 
+	i = 0;
 	while (s1[i])
 	{
 		if (s2[i] == 0)

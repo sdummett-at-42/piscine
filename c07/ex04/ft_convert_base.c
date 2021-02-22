@@ -6,24 +6,20 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/20 18:14:23 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/20 19:58:25 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/22 08:12:33 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+int			ft_base_is_ok(char *base);
+int			ft_strlen(char *str);
+char		*ft_put_base(int *tab, int tab_size, int sign, char *base);
 
-int	ft_base_is_ok(char *base);
-int	ft_strlen(char *str);
-char	*ft_put_base(int *tab, int tab_size, int sign, char *base);
-
-char	*ft_putnbr_base(long long nb, char *base)
+char		*ft_putnbr_base(long long nb, char *base)
 {
 	int			i;
 	int			sign;
 	int			tab[50];
 
-	if (ft_base_is_ok(base) == 1 || ft_strlen(base) == 1)
-		return (0);
 	sign = 0;
 	if (nb < 0)
 	{
@@ -45,7 +41,7 @@ char	*ft_putnbr_base(long long nb, char *base)
 	return (ft_put_base(tab, i, sign, base));
 }
 
-int		ft_str_is_convertissable(char *str, char *base)
+int			ft_str_is_convertissable(char *str, char *base)
 {
 	int i;
 	int j;
@@ -71,8 +67,8 @@ int		ft_str_is_convertissable(char *str, char *base)
 
 long long	ft_converter(int *tab, char *base, int base_len, char *str)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 	long long	nb;
 
 	i = 0;
@@ -92,23 +88,12 @@ long long	ft_converter(int *tab, char *base, int base_len, char *str)
 	return (nb);
 }
 
-long long		ft_atoi_base(char *str, char *base)
+long long	ft_atoi_base(char *str, char *base, int sign)
 {
 	int i;
 	int j;
-	int sign;
 	int tab[ft_strlen(base) * 2];
 
-	if (ft_base_is_ok(base) == 1)
-		return (0);
-	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	while (*str == '+' || *str == '-')
-		if (*str++ == '-')
-			sign *= -1;
-	if (ft_str_is_convertissable(str, base) == 0)
-		return (0);
 	i = 0;
 	j = 0;
 	while (i < ft_strlen(base) * 2)
@@ -121,7 +106,21 @@ long long		ft_atoi_base(char *str, char *base)
 	return (ft_converter(tab, base, ft_strlen(base) * 2, str) * sign);
 }
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char		*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	return (ft_putnbr_base(ft_atoi_base(nbr, base_from), base_to));
+	int sign;
+
+	if (ft_strlen(base_from) == 1 || ft_strlen(base_to) == 1)
+		return (0);
+	if (ft_base_is_ok(base_from) == 1 || ft_base_is_ok(base_to) == 1)
+		return (0);
+	sign = 1;
+	while (*nbr == ' ' || (*nbr >= 9 && *nbr <= 13))
+		nbr++;
+	while (*nbr == '+' || *nbr == '-')
+		if (*nbr++ == '-')
+			sign *= -1;
+	if (ft_str_is_convertissable(nbr, base_from) == 0)
+		return (0);
+	return (ft_putnbr_base(ft_atoi_base(nbr, base_from, sign), base_to));
 }

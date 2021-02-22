@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 10:37:39 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/18 10:38:27 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/04 08:18:37 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/22 15:29:18 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar(char c)
+void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }

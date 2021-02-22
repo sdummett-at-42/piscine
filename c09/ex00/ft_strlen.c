@@ -6,11 +6,11 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 10:43:14 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/18 10:44:38 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/22 15:29:48 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strlen(char *str)
+int		ft_strlen(char *str)
 {
 	int len;
 

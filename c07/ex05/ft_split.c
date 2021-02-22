@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/16 12:37:23 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/17 15:51:31 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/22 09:53:15 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ char	**ft_split(char *str, char *charset)
 	int		len;
 	char	**strs;
 
-	strs = (char **)malloc(sizeof(char *) * ft_count_words(str, charset) + 1);
+	if(!(strs = (char **)malloc(sizeof(char *) * ft_count_words(str, charset) + 1)))
+		return (0);
 	j = 0;
 	while (*str != 0)
 	{

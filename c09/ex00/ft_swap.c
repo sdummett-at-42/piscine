@@ -6,11 +6,11 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 10:38:48 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/19 20:55:28 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/22 15:30:11 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_swap(int *a, int *b)
+void	ft_swap(int *a, int *b)
 {
 	int temp;
 
