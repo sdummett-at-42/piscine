@@ -6,11 +6,11 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 20:26:53 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/22 20:59:25 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/23 07:51:46 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_any(char **tab, int(*f)(char*))
+int	ft_any(char **tab, int (*f)(char*))
 {
 	int i;
 

@@ -6,13 +6,13 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 20:17:53 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/22 20:26:10 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/23 07:51:30 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int *ft_map(int *tab, int length, int(*f)(int))
+int		*ft_map(int *tab, int length, int (*f)(int))
 {
 	int i;
 	int *array;

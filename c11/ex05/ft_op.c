@@ -6,31 +6,48 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 22:53:14 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/22 22:55:21 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/23 12:11:47 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	add(int a, int b)
+#include "ft_header.h"
+
+void	add(int a, int b)
 {
-	return (a + b);
+	ft_putnbr(a + b);
+	ft_putchar('\n');
 }
 
-int	sub(int a, int b)
+void	sub(int a, int b)
 {
-	return (a - b);
+	ft_putnbr(a - b);
+	ft_putchar('\n');
 }
 
-int	mult(int a, int b)
+void	mult(int a, int b)
 {
-	return (a * b);
+	ft_putnbr(a * b);
+	ft_putchar('\n');
 }
 
-int	div(int a, int b)
+void	div(int a, int b)
 {
-	return (a / b);
+	if (b == 0)
+		ft_putstr("Stop : division by zero\n");
+	else
+	{
+		ft_putnbr(a / b);
+		ft_putchar('\n');
+	}
 }
 
-int	mod(int a, int b)
+void	mod(int a, int b)
 {
-	return (a % b);
+	if (b == 0)
+		ft_putstr("Stop : modulo by zero\n");
+	else
+	{
+		ft_putnbr(a % b);
+		ft_putchar('\n');
+	}
 }

@@ -6,44 +6,18 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/22 15:54:23 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/22 16:11:40 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/02/23 07:50:39 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	write(1, &c, 1);
-}
+	int i;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	i = 0;
+	while (i < length)
 	{
-		write(1, "-2147483648", 11);
-		return ;
+		f(tab[i]);
+		i++;
 	}
-	else if (nb < 0)
-	{
-		ft_putchar('-');
-		nb *= -1;
-	}
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		ft_putchar(nb % 10 + 48);
-	}
-	else
-		ft_putchar(nb + 48);
-}
-
-void	ft_foreach(int *, int length, void(*f)(int))
-{
-	
-}
-
-int main()
-{
-	
 }
