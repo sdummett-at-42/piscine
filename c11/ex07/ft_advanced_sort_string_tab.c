@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_string_tab.c                               :+:      :+:    :+:   */
+/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 10:01:40 by sdummett          #+#    #+#             */
-/*   Updated: 2021/02/23 19:51:27 by sdummett         ###   ########.fr       */
+/*   Created: 2021/02/23 19:53:18 by sdummett          #+#    #+#             */
+/*   Updated: 2021/02/23 20:08:45 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int		ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	ft_sort_string_tab(char **tab)
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char*, char*))
 {
 	int		i;
 	char	*temp;
@@ -36,7 +36,7 @@ void	ft_sort_string_tab(char **tab)
 	i = 0;
 	while (tab[i + 1] != 0)
 	{
-		if (ft_strcmp(tab[i], tab[i + 1]) > 0)
+		if (cmp(tab[i], tab[i + 1]) > 0)
 		{
 			temp = tab[i];
 			tab[i] = tab[i + 1];
