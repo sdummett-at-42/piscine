@@ -6,7 +6,7 @@
 #    By: sdummett <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/23 09:41:48 by sdummett          #+#    #+#              #
-#    Updated: 2021/02/23 09:57:40 by sdummett         ###   ########.fr        #
+#    Updated: 2021/02/24 11:02:21 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ all:
 ${NAME}: all
 
 clean:
-		${RM} ${NAME}
+		${RM}
 
 fclean:	clean
 		${RM} ${NAME}
