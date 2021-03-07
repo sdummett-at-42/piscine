@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_find.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/06 11:59:22 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/06 14:35:57 by sdummett         ###   ########.fr       */
+/*   Created: 2021/03/07 16:00:27 by sdummett          #+#    #+#             */
+/*   Updated: 2021/03/07 16:32:41 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "../ft_list.h"
-t_list	*ft_list_push_strs(int size, char **strs);
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+t_list	*ft_list_find(t_list *begin_list, void *data_ref, int (*cmp)())
 {
-	t_list	*elem;
-	t_list	*last_elem;
+	t_list *list_ptr;
 
-	elem = begin_list;
-	while (elem)
+	list_ptr = begin_list;
+	while (list_ptr)
 	{
-		free_fct(elem->data);
-		last_elem = elem;
-		elem = elem->next;
-		free(last_elem);
+		if (!((*cmp)(list_ptr->data, data_ref)))
+			return (list_ptr);
+		list_ptr = list_ptr->next;
 	}
+	return (0);
 }

@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/06 11:59:22 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/06 14:35:57 by sdummett         ###   ########.fr       */
+/*   Created: 2021/03/06 14:19:28 by sdummett          #+#    #+#             */
+/*   Updated: 2021/03/06 14:52:03 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "../ft_list.h"
-t_list	*ft_list_push_strs(int size, char **strs);
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	t_list	*elem;
-	t_list	*last_elem;
+	unsigned int	i;
 
-	elem = begin_list;
-	while (elem)
+	i = 1;
+	while (i < nbr && begin_list)
 	{
-		free_fct(elem->data);
-		last_elem = elem;
-		elem = elem->next;
-		free(last_elem);
+		begin_list = begin_list->next;
+		i++;
 	}
+	if (i != nbr)
+		return (0);
+	return (begin_list);
 }

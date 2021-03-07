@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/06 11:59:22 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/06 14:35:57 by sdummett         ###   ########.fr       */
+/*   Created: 2021/03/07 18:33:53 by sdummett          #+#    #+#             */
+/*   Updated: 2021/03/07 19:13:50 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
 #include "../ft_list.h"
-t_list	*ft_list_push_strs(int size, char **strs);
 
-void	ft_list_clear(t_list *begin_list, void (*free_fct)(void *))
+void	ft_list_sort(t_list **begin_list, int (*cmp)())
 {
-	t_list	*elem;
-	t_list	*last_elem;
+	void	*data_temp;
+	t_list	*list_ptr;
+	t_list	*other_list_ptr;
 
-	elem = begin_list;
-	while (elem)
+	list_ptr = *begin_list;
+	while (list_ptr->next)
 	{
-		free_fct(elem->data);
-		last_elem = elem;
-		elem = elem->next;
-		free(last_elem);
+		other_list_ptr = list_ptr->next;
+		if ((*cmp)(list_ptr->data, other_list_ptr->data) > 0)
+		{
+			data_temp = list_ptr->data;
+			list_ptr->data = other_list_ptr->data;
+			other_list_ptr->data = data_temp;
+			list_ptr = *begin_list;
+		}
+		else
+			list_ptr = list_ptr->next;
 	}
 }
