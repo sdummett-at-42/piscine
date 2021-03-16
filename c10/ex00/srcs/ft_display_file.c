@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_front.c                               :+:      :+:    :+:   */
+/*   ft_display_file.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/05 16:02:52 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/15 11:24:33 by sdummett         ###   ########.fr       */
+/*   Created: 2021/03/15 17:03:07 by sdummett          #+#    #+#             */
+/*   Updated: 2021/03/16 12:42:18 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "../ft_list.h"
-t_list	*ft_create_elem(void *data);
+#include "ft_header.h"
 
-void	ft_list_push_front(t_list **begin_list, void *data)
+int	ft_strlen(char *str)
 {
-	t_list	*list;
+	int	len;
 
-	if (*begin_list)
-	{
-		list = ft_create_elem(data);
-		list->next = *begin_list;
-		*begin_list = list;
-	}
-	else
-		*begin_list = ft_create_elem(data);
+	len = 0;
+	while (*(str + len))
+		len++;
+	return (len);
+}
+
+void	ft_putstr(char *str)
+{
+	write(1, str, ft_strlen(str));
 }
