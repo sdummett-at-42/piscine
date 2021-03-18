@@ -6,30 +6,20 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/16 15:36:26 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/16 19:31:25 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/17 19:33:57 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <fcntl.h>
-#include <unistd.h>
-#define BUF_SIZE 29999
+#include "ft_header.h"
 
-int	ft_strlen(char *str)
+void	ft_puterror(char *file_name)
 {
-	int	len;
-
-	len = 0;
-	while (*(str + len))
-		len++;
-	return (len);
+	ft_putstr("ft_cat: ");
+	ft_putstr(file_name);
+	ft_putstr(": ");
+	ft_putstr(strerror(errno));
+	ft_putstr("\n");
 }
-
-void	ft_putstr(char *str)
-{
-	write(1, str, ft_strlen(str));
-}
-
 
 void	ft_display_file(char *file_name)
 {
@@ -40,16 +30,19 @@ void	ft_display_file(char *file_name)
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 	{	
-		ft_putstr("cat: ");
-		ft_putstr(file_name);
-		ft_putstr(": No such file or directory\n");
+		ft_puterror(file_name);
 		return ;
 	}
 	ret = read(fd, buf, BUF_SIZE);
+	if (ret < 0)
+	{
+		ft_puterror(file_name);
+		return ;
+	}
 	buf[ret] = 0;
 	while (ret)
 	{
-		ft_putstr(buf);
+		ft_putbuf(buf, ret);
 		ret = read(fd, buf, BUF_SIZE);
 		buf[ret] = 0;
 	}
