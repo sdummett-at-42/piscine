@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:20:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/19 15:35:03 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/19 19:48:57 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,102 +97,98 @@ int	shift_bytes(char *s1, char *s2, int index)
 	return (diff);
 }
 
-int	ft_strcmp_8bytes(char *s1, char *s2)
+int	ft_strcmp_16bytes(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (*(s1 + i) && i < 8)
+	while (*(s1 + i) && i < 16)
 	{
 		if (*(s1 + i) != *(s2 + i))
 			return (*(s1 + i) - *(s2 + i));
 		i++;
 	}
-	return (*(s1 + i) - *(s2 + i));
+	return (*(s1 + i - 1) - *(s2 + i - 1));
 }
 
 void	buffer_manager(char **filename, int size)
 {
-	//free(buf)
 	int		i;
 	int	 	j;
 	int		buf_size;
 	int		token;
-	//unsigned int	hex;
+	long int	hex;
 	char		*buf;
-	char		*buf_temp;
+//	char		*buf_temp;
 
 	i = 1;
 	j = 0;
-	token = 1;
+	hex = 0;
+	token = 0;
 	buf = create_buf(filename[i]);
 	buf_size = compute_bufsize(filename[i]);
-//	ft_putaddr_inhex(j);
-//	ft_print_memory()
+	putaddr_inhex(hex);
+	ft_print_memory(buf, 16);
 	while (i < size)
 	{
 		while (j < buf_size)
 		{
-			if (j + 16 < buf_size)
+			if (j + 32 <= buf_size)
 			{
-				if (ft_strcmp_8bytes(buf + j, buf + j + 8) == 0)
+				if (ft_strcmp_16bytes(buf + j, buf + j + 16) == 0)
 				{
-					if (j == 0 && i == 1)
-						ft_print_memory(buf, 8);
-					if (token)
+					if (token || (i == 1 && j == 0))
 					{
+						if (!(i == 1 && j == 0) || token)
+						{
+							putaddr_inhex(hex);
+							ft_print_memory(buf + j, 16);
+						}
 						ft_putstr("*\n");
 						token = 0;
 					}
 				}
+				else if (token == 1)
+				{
+					putaddr_inhex(hex);
+					ft_print_memory(buf + j, 16);
+				}
 				else
+				{
 					token = 1;
+				}
 			}
 			else
 			{
 				if (i + 1 == size)
-					ft_print_memory(buf + j, buf_size - j);
-				else
 				{
-					if (compute_bufsize(filename[i + 1]) > j + 16 - buf_size)
-						ft_print_memory(buf + j, buf_size - j);
+					if (token == 1)
+					{
+						putaddr_inhex(hex);
+						ft_print_memory(buf + j, 16);
+						putaddr_inhex(hex + 1);
+						ft_print_memory(buf + j + 16, buf_size - j - 16);
+					}
 					else
 					{
-						buf_temp = create_buf(filename[i + 1]);
-						shift_bytes(buf, buf_temp, j);
-						if (ft_strcmp_8bytes(buf, buf + 8) == 0)
-						{
-							ft_putstr("*");
-						}
-						else
-						{
-							token = 1;
-							ft_print_memory(buf, 8);
-						}
-						
+						putaddr_inhex(hex + 1);
+						ft_print_memory(buf + j + 16, buf_size - j - 16);
 					}
+					j = j + 16;
 				}
-				//keep a token to know if we need to print the next "*".
 			}
-			j = j + 8;
+			j = j + 16;
+			hex++;
 		}
-		//ft_print_memory(buf, compute_bufsize(filename[i]));
 		i++;
 	}
+	free(buf);
 }
 
 int	main(int ac, char *av[])
 {
-	//int	i;
-
 	if (ac == 1)
 		return (0);
 	buffer_manager(av, ac);
-//	i = 1;
-//	while (i < ac)
-//	{
-//		ft_print_memory(create_buf(av[i]), compute_bufsize(av[i]));
-//		i++;
-//	}
 	return (0);
 }

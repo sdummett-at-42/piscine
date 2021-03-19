@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:38:00 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/19 01:59:57 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/19 17:07:26 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,6 @@ int	ft_strlen(char *str);
 void	ft_putstr(char *str);
 void	ft_putbuf(char *str, int ret);
 void	*ft_print_memory(void *addr, unsigned int size);
+void	putaddr_inhex(long int addr);
 
 #endif

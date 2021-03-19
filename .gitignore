@@ -6,12 +6,11 @@
 #    By: sdummett <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/06 14:09:55 by sdummett          #+#    #+#              #
-#    Updated: 2021/03/19 15:37:45 by sdummett         ###   ########.fr        #
+#    Updated: 2021/03/19 19:49:35 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-tests
 *.out
 *.gch
 *.swp
-main2.c
+testfiles
