@@ -6,11 +6,69 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:02 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/20 16:43:42 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/20 16:46:52 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
+
+void	ft_puterror(char *filename)
+{
+	ft_putstr("ft_hexdump");
+	ft_putstr(filename);
+	ft_putstr(": ");
+	ft_putstr(strerror(errno));
+	ft_putstr("\n");
+}
+
+int	compute_bufsize(char *filename)
+{
+	int	fd;
+	int	ret;
+	int	buf_size;
+	char	buf[30000];
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_puterror(filename);
+		return (0);
+	}
+	ret = read(fd, buf, 30000);
+	buf_size = ret;
+	while (ret)
+	{
+		ret = read(fd, buf, 30000);
+		buf_size = buf_size + ret;
+	}
+	close(fd);
+	return (buf_size);
+}
+
+char	*create_buf(char *filename)
+{
+	int	fd;
+	int	ret;
+	int	buf_size;
+	char	*buf;
+
+	buf_size = compute_bufsize(filename);
+	if (!buf_size)
+		return (0);
+	buf = malloc(sizeof(char) * buf_size + 1);
+	if (!buf)
+		return (0);
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_puterror(filename);
+		return (0);
+	}
+	ret = read(fd, buf, buf_size);
+	buf[ret] = 0;
+	close(fd);
+	return (buf);
+}
 
 int	ft_strlen(char *str)
 {
