@@ -6,11 +6,11 @@
 #    By: sdummett <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/18 22:51:52 by sdummett          #+#    #+#              #
-#    Updated: 2021/03/19 01:43:21 by sdummett         ###   ########.fr        #
+#    Updated: 2021/03/21 01:05:22 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 NAME = ft_hexdump
 SRC = srcs/main.c srcs/ft_print_memory.c srcs/utils.c

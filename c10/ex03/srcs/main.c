@@ -6,53 +6,72 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:20:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/20 18:03:18 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/21 01:29:50 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
 
-void	buffer_manager(char **filename, int nboffiles)
+void	shiftbytes(void *addr)
 {
-	int		i;
-	int	 	j;
-	int		bufsize;
-	int		token;
-	long int	hex;
-	char		*buf;
-//	char		*bytesToCmp_temp[33];
+	int	i;
 
-	i = 1;
-	j = 0;
-	hex = 0;
-	token = 0;
-	buf = create_buf(filename[i]);
-	bufsize = compute_bufsize(filename[i]);
-	if (i + 1 == nboffiles && bufsize < 32)
+	i = 0;
+	while (i < 16)
 	{
-		while (bufsize)
+		*(unsigned char *)(addr + i) = *(unsigned char *)(addr + i + 16);
+		i++;
+	}
+}
+
+void	buffer_manager(char **filename, int nfiles)
+{
+	char	tmp[32];
+	char	*buf;
+	int	currfile;
+	int	nbytes;
+	int	i;
+	int	j;
+
+	//nfiles = 1000;
+	i = 0;
+	j = 0;
+	currfile = 1;
+	buf = createbuf(filename[currfile]);
+	nbytes = compute_bufsize(filename[currfile]);
+	while (i < 16)
+	{
+		while (i < 16 && j < nbytes)
 		{
-			if (bufsize > 16)
+			tmp[i] = buf[j];
+			i++;
+			j++;
+		}
+		if (i < 16)
+		{
+			if (currfile + 1 < nfiles)
 			{
-				putaddr_inhex(hex);
-				ft_print_memory(buf + j, 16);
-				j = j + 16;
-				hex++;
+				free(buf);
+				currfile++;
+				buf = createbuf(filename[currfile]);
+				nbytes = compute_bufsize(filename[currfile]);
+				j = 0;
 			}
-			else if (bufsize > 0)
+			else
 			{
-				putaddr_inhex(hex);
-				ft_print_memory(buf + j, bufsize);
+				puthex(0);
+				ft_print_memory(tmp, i);
 				return ;
 			}
-			bufsize = bufsize - 16;
 		}
 	}
-	//while (i < nboffiles)
-	//{
+/*	while (currfile < nfiles)
+	{
+		buf = createbuf(filename[currfile]);
 
-	//}
-	free(buf);
+		currfile++;
+	}
+*/
 }
 
 int	main(int ac, char *av[])

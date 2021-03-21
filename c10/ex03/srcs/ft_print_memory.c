@@ -6,14 +6,13 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:35:10 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/20 18:06:25 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/21 01:27:53 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
-#include <stdio.h>
 
-void	putaddr_inhex(long int addr)
+void	puthex(long int addr)
 {
 	int	i;
 	char	str[9];
@@ -68,7 +67,7 @@ void	ft_putstr_dot_nonprintable(char *str, int j)
 	ft_putspace(j);
 	ft_putstr("|");
 	i = 0;
-	while (*(str + i) && i < 16)
+	while (/**(str + i) &&*/ i < j) //last version (i < 16)
 	{
 		if (*(str + i) >= 32 && *(str + i) <= 126)
 			write(1, str + i, 1);

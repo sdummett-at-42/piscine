@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:02 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/20 16:46:52 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/21 00:27:25 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	compute_bufsize(char *filename)
 	return (buf_size);
 }
 
-char	*create_buf(char *filename)
+char	*createbuf(char *filename)
 {
 	int	fd;
 	int	ret;
