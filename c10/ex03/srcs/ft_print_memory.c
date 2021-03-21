@@ -6,13 +6,13 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:35:10 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/21 01:27:53 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/21 03:19:48 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
 
-void	puthex(long int addr)
+void	puthex(long int value)
 {
 	int	i;
 	char	str[9];
@@ -26,26 +26,34 @@ void	puthex(long int addr)
 		i++;
 	}
 	str[i] = 0;
-	while (addr)
+	while (value)
 	{
-		str[i - 2] = *(hexbase + addr % 16);
-		addr = addr / 16;
+		str[i - 1] = *(hexbase + value % 16);
+		value = value / 16;
 		i--;
 	}
 	ft_putstr(str);
 	ft_putstr("  ");
 }
 
-void	ft_puthex(int ch)
+void	ft_puthex( int ch)
 {
 	char	*hex_base;
 
 	hex_base = "0123456789abcdef";
-	if (ch > 0)
+	
+//	if (ch < 17)
+//	{
+//		write(1, "0", 1);
+//		write()
+//	}
+	if (ch > 16)
 	{
 		ft_puthex(ch / 16);
 		write(1, (hex_base + (ch % 16)), 1);
 	}
+	else
+		write(1, (hex_base + (ch % 16)), 1);
 }
 
 void	ft_putspace(int j)
@@ -81,7 +89,7 @@ void	ft_putstr_dot_nonprintable(char *str, int j)
 
 void	*ft_print_memory(void *addr, unsigned int size)
 {
-	int	ch;
+	unsigned int	ch;
 	unsigned int	i;
 	int	j;
 
@@ -91,7 +99,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	{
 		//if ((i + 1) % 16 == 1)
 		//	putaddr_inhex(i);
-		ch = *(char *)(addr + i);
+		ch = *(unsigned char *)(addr + i);
 		if (ch < 17)
 			write(1, "0", 1);
 		ft_puthex(ch);
