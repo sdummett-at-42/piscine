@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:20:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/21 01:29:50 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/21 02:00:52 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	buffer_manager(char **filename, int nfiles)
 	int	i;
 	int	j;
 
-	//nfiles = 1000;
 	i = 0;
 	j = 0;
 	currfile = 1;
@@ -65,13 +64,48 @@ void	buffer_manager(char **filename, int nfiles)
 			}
 		}
 	}
-/*	while (currfile < nfiles)
+	while (currfile < nfiles)
 	{
-		buf = createbuf(filename[currfile]);
-
-		currfile++;
+		i = 0;
+		while (i < 16)
+		{
+			while (i < 16 && j < nbytes)
+			{
+				tmp[16 + i] = buf[j];
+				i++;
+				j++;
+			}
+			if (i < 16)
+			{
+				if (currfile + 1 < nfiles)
+				{
+					free(buf);
+					currfile++;
+					buf = createbuf(filename[currfile]);
+					nbytes = compute_bufsize(filename[currfile]);
+					j = 0;
+				}
+				else
+				{
+					puthex(0);
+					ft_print_memory(tmp, i);
+					return ;
+				}
+			}
+		}
+		if (ft_memcmp(tmp, tmp + 16, 16))
+		{
+			puthex(0);
+			ft_print_memory(tmp, 16);
+		}
+		else
+		{
+			ft_putstr("*\n");
+		}
+		shiftbytes(tmp);
+		//currfile++;
 	}
-*/
+
 }
 
 int	main(int ac, char *av[])
