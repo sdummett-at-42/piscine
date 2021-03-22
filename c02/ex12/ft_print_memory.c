@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 11:04:08 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/22 14:11:09 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 18:21:00 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	putaddr_inhex(long int addr)
 {
 	int	i;
-	char	str[16];
+	char	str[17];
 	char	*hexbase;
 
 	hexbase = "0123456789abcdef";
 	i = 0;
-	while (i < 15)
+	while (i < 16)
 	{
 		str[i] = '0';
 		i++;
@@ -32,7 +32,7 @@ void	putaddr_inhex(long int addr)
 		addr = addr / 16;
 		i--;
 	}
-	write(1, str, 15);
+	write(1, str, 16);
 	write(1, ": ", 2);
 }
 
