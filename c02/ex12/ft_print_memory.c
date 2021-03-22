@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 11:04:08 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/14 19:35:02 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 14:11:09 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ void	ft_puthex(int ch)
 	char	*hex_base;
 
 	hex_base = "0123456789abcdef";
-	if (ch > 0)
+	if (ch > 15)
 	{
 		ft_puthex(ch / 16);
 		write(1, (hex_base + (ch % 16)), 1);
 	}
+	else
+		write(1, (hex_base + (ch % 16)), 1);
 }
 
 void	ft_putspace(int j)
@@ -67,13 +69,13 @@ void	ft_putspace(int j)
 	}
 }
 
-void	ft_putstr_dot_nonprintable(char *str, int j)
+void	ft_putstr_dot_nonprintable(char *str, int j, int size)
 {
 	int	i;
 
 	ft_putspace(j);
 	i = 0;
-	while (*(str + i) && i < 16)
+	while (i < 16 && i < size)
 	{
 		if (*(str + i) >= 32 && *(str + i) <= 126)
 			write(1, str + i, 1);
@@ -96,8 +98,8 @@ void	*ft_print_memory(void *addr, unsigned int size)
 	{
 		if ((i + 1) % 16 == 1)
 			putaddr_inhex((long int)(addr + i));
-		ch = *(char *)(addr + i);
-		if (ch < 17)
+		ch = *(unsigned char *)(addr + i);
+		if (ch < 16)
 			write(1, "0", 1);
 		ft_puthex(ch);
 		if ((i + 1) % 2 == 0)
@@ -106,7 +108,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		j++;
 		if ((i + 1) % 16 == 1 || i == size)
 		{
-			ft_putstr_dot_nonprintable((char *)(addr + i - j), j);
+			ft_putstr_dot_nonprintable((char *)(addr + i - j), j, size - i +j);
 			j = 0;
 		}
 	}
