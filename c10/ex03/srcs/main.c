@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:20:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/22 12:08:12 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 20:05:40 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void	buffer_manager(char **filename, int nfiles)
 				free(buf);
 				currfile++;
 				buf = createbuf(filename[currfile]);
+				while (!buf && currfile < nfiles)
+				{
+					currfile++;
+					buf = createbuf(filename[currfile]);
+					if (currfile == nfiles)
+						return ;
+				}
 				nbytes = compute_bufsize(filename[currfile]);
 				j = 0;
 			}
@@ -87,7 +94,15 @@ void	buffer_manager(char **filename, int nfiles)
 				{
 					free(buf);
 					currfile++;
+
 					buf = createbuf(filename[currfile]);
+					while (!buf && currfile < nfiles)
+					{
+						currfile++;
+						buf = createbuf(filename[currfile]);
+						if (currfile == nfiles)
+							return ;
+					}
 					nbytes = compute_bufsize(filename[currfile]);
 					j = 0;
 				}
@@ -108,7 +123,7 @@ void	buffer_manager(char **filename, int nfiles)
 					}
 					else
 						puthex(hex, 0);
-					
+
 					free(buf);
 					return ;
 				}
