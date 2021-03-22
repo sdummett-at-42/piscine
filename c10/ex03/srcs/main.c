@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:20:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/21 03:23:05 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 11:45:27 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	buffer_manager(char **filename, int nfiles)
 	int	i;
 	unsigned long	j;
 	unsigned long	hex;
-
 
 	i = 0;
 	j = 0;

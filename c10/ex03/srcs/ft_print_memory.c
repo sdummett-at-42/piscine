@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:35:10 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/21 03:19:48 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 11:27:47 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_puthex( int ch)
 //		write(1, "0", 1);
 //		write()
 //	}
-	if (ch > 16)
+	if (ch > 15)
 	{
 		ft_puthex(ch / 16);
 		write(1, (hex_base + (ch % 16)), 1);
@@ -100,7 +100,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		//if ((i + 1) % 16 == 1)
 		//	putaddr_inhex(i);
 		ch = *(unsigned char *)(addr + i);
-		if (ch < 17)
+		if (ch < 16)
 			write(1, "0", 1);
 		ft_puthex(ch);
 		if (j + 1 == 8 || j + 1 == 16)
