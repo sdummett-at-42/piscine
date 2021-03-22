@@ -6,13 +6,13 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:35:10 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/22 11:27:47 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 12:06:37 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
 
-void	puthex(long int value)
+void	puthex(long int value, int token)
 {
 	int	i;
 	char	str[9];
@@ -33,7 +33,10 @@ void	puthex(long int value)
 		i--;
 	}
 	ft_putstr(str);
-	ft_putstr("  ");
+	if (token)
+		ft_putstr("  ");
+	else
+		ft_putstr("\n");
 }
 
 void	ft_puthex( int ch)

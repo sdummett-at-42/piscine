@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:02 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/21 00:27:25 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 12:13:49 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_puterror(char *filename)
 {
 	ft_putstr("ft_hexdump");
+	ft_putstr(": ");
 	ft_putstr(filename);
 	ft_putstr(": ");
 	ft_putstr(strerror(errno));

@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:20:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/22 11:45:27 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/22 12:08:12 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	buffer_manager(char **filename, int nfiles)
 			}
 			else
 			{
-				puthex(0);
+				puthex(0, 1);
 				ft_print_memory(tmp, i);
 				return ;
 			}
@@ -95,12 +95,20 @@ void	buffer_manager(char **filename, int nfiles)
 				{
 					if (diff == 0)
 					{
-						puthex(hex);
+						puthex(hex - i, 1);
 						ft_print_memory(tmp, 16);
 						hex = hex + 16;
 					}
-					puthex(hex);
-					ft_print_memory(tmp + 16, i);
+					if (i)
+					{
+
+						puthex(hex - i, 1);
+						ft_print_memory(tmp + 16, i);
+						puthex(hex, 0);
+					}
+					else
+						puthex(hex, 0);
+					
 					free(buf);
 					return ;
 				}
@@ -110,14 +118,14 @@ void	buffer_manager(char **filename, int nfiles)
 		{
 			if (diff == 0)
 			{
-				puthex(hex - 16);
+				puthex(hex - 16, 1);
 				ft_print_memory(tmp, 16);
 			}
 			diff = 0;
 		}
 		else if (diff == 0)
 		{
-			puthex(hex - 16);
+			puthex(hex - 16, 1);
 			ft_print_memory(tmp, 16);
 			ft_putstr("*\n");
 			diff = 1;
