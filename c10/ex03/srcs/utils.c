@@ -6,11 +6,12 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 19:31:02 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/22 19:49:27 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/26 23:18:46 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
+#include <stdio.h>
 
 void	ft_puterror(char *filename)
 {
@@ -21,6 +22,27 @@ void	ft_puterror(char *filename)
 	write(2, "\n", 1);
 }
 
+int	checkerror(char *filename)
+{
+	int		fd;
+	char	buf[1];
+
+	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_puterror(filename);
+		return (-1);
+	}
+	read(fd, buf, 1);
+	if (errno)
+	{
+		ft_puterror(filename);
+		return (1);
+	}
+	close(fd);
+	return (0);
+}
+
 int	compute_bufsize(char *filename)
 {
 	int	fd;
@@ -29,11 +51,6 @@ int	compute_bufsize(char *filename)
 	char	buf[30000];
 
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_puterror(filename);
-		return (0);
-	}
 	ret = read(fd, buf, 30000);
 	buf_size = ret;
 	while (ret)
@@ -52,6 +69,8 @@ char	*createbuf(char *filename)
 	int	buf_size;
 	char	*buf;
 
+	if (checkerror(filename))
+		return (0);
 	buf_size = compute_bufsize(filename);
 	if (!buf_size)
 		return (0);
@@ -59,11 +78,6 @@ char	*createbuf(char *filename)
 	if (!buf)
 		return (0);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_puterror(filename);
-		return (0);
-	}
 	ret = read(fd, buf, buf_size);
 	buf[ret] = 0;
 	close(fd);

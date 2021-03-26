@@ -6,7 +6,7 @@
 /*   By: sdummett <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/19 01:20:44 by sdummett          #+#    #+#             */
-/*   Updated: 2021/03/22 20:05:40 by sdummett         ###   ########.fr       */
+/*   Updated: 2021/03/26 23:19:14 by sdummett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,40 @@ void	shiftbytes(void *addr)
 void	buffer_manager(char **filename, int nfiles)
 {
 	//which variables needs to be unsigned long ?
-	char	tmp[32];
-	char	*buf;
-	int	currfile;
+	char			tmp[32];
+	char			*buf;
+	int				currfile;
 	unsigned long	nbytes;
-	int	diff;
-	int	i;
+	int				diff;
+	int				i;
 	unsigned long	j;
 	unsigned long	hex;
+	int				allfailed;
+	int				check;
 
 	i = 0;
 	j = 0;
 	currfile = 1;
+	buf = 0;
+	allfailed = 1;
+	while (currfile < nfiles)
+	{
+		check = checkerror(filename[currfile]);
+
+		if (check)
+		{
+			if (check == -1)
+				allfailed++;
+		}
+		else
+			break ;
+		currfile++;
+
+	}
+	if (allfailed == nfiles)
+		ft_putstr("all input file arguments failed\n");
+	if (currfile == nfiles)
+		return ;
 	buf = createbuf(filename[currfile]);
 	nbytes = compute_bufsize(filename[currfile]);
 	while (i < 16)
@@ -76,6 +98,7 @@ void	buffer_manager(char **filename, int nfiles)
 	}
 	hex = 0;
 	diff = 0;
+	check = 0;
 	while (currfile < nfiles)
 	{
 		i = 0;
@@ -92,19 +115,24 @@ void	buffer_manager(char **filename, int nfiles)
 			{
 				if (currfile + 1 < nfiles)
 				{
-					free(buf);
+					if (buf)
+						free(buf);
+					buf = 0;
 					currfile++;
-
-					buf = createbuf(filename[currfile]);
-					while (!buf && currfile < nfiles)
+					check = checkerror(filename[currfile]);
+					while (currfile + 1 < nfiles && check)
 					{
 						currfile++;
-						buf = createbuf(filename[currfile]);
+						check = checkerror(filename[currfile]);
 						if (currfile == nfiles)
 							return ;
 					}
-					nbytes = compute_bufsize(filename[currfile]);
-					j = 0;
+					if (!check)
+					{
+						buf = createbuf(filename[currfile]);
+						nbytes = compute_bufsize(filename[currfile]);
+						j = 0;
+					}
 				}
 				else
 				{
@@ -116,15 +144,14 @@ void	buffer_manager(char **filename, int nfiles)
 					}
 					if (i)
 					{
-
 						puthex(hex - i, 1);
 						ft_print_memory(tmp + 16, i);
 						puthex(hex, 0);
 					}
 					else
 						puthex(hex, 0);
-
-					free(buf);
+					if (buf)
+						free(buf);
 					return ;
 				}
 			}
