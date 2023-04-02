@@ -1,19 +1,34 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    .gitignore                                         :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: sdummett <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/17 11:40:58 by sdummett          #+#    #+#              #
-#    Updated: 2023/04/02 12:04:48 by sdummett         ###   ########.fr        #
+#    Created: 2021/03/18 22:51:52 by sdummett          #+#    #+#              #
+#    Updated: 2021/03/21 01:05:22 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ft_main.c
-*.swp
-a.out
-*.out
-*.gch
-*.swp
-testfiles
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+NAME = ft_hexdump
+SRC = srcs/main.c srcs/ft_print_memory.c srcs/utils.c
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+

@@ -1,19 +1,33 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    .gitignore                                         :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: sdummett <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/17 11:40:58 by sdummett          #+#    #+#              #
-#    Updated: 2023/04/02 12:04:48 by sdummett         ###   ########.fr        #
+#    Created: 2021/03/17 19:35:19 by sdummett          #+#    #+#              #
+#    Updated: 2021/03/17 19:36:24 by sdummett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ft_main.c
-*.swp
-a.out
-*.out
-*.gch
-*.swp
-testfiles
+CC = clang
+CFLAGS = -Wall -Wextra -Werror
+NAME = ft_cat
+SRC = srcs/main.c srcs/utils.c
+OBJ = $(SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) -o $(NAME) $(OBJ)
+
+%.o: %.c
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+clean:
+	rm -f $(OBJ)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
